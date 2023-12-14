@@ -84,13 +84,11 @@ class MyClient(discord.Client):
         # set the its status as typing for user-friendliness
         async with message.channel.typing():
           response = self.query(payload)
-        bot_response = response.get('generated_text', None)
-
-        # we may get ill-formed response if the model hasn't fully loaded
-        # or has timed out
-        if not bot_response:
+          bot_response = response.get('generated_text', None)
+          if not bot_response:
             if 'error' in response:
-                bot_response = '`Error: {}`'.format(response['error'])
+                # Custom message for loading
+                bot_response = "Hold on darling, I'm loading. Can you repeat that for me in a few seconds?"
             else:
                 bot_response = 'Hmm... something is not right.'
 
