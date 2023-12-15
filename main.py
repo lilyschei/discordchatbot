@@ -89,9 +89,7 @@ class MyClient(discord.Client):
             if 'error' in response:
                 # Custom message for loading
                 bot_response = "Hold on darling, I'm loading. Can you repeat that for me in a few seconds?"
-            else:
-                bot_response = 'Hmm... something is not right.'
-
+            
         # send the model's response to the Discord channel
         await message.channel.send(bot_response)
 
